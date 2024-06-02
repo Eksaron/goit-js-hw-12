@@ -10,7 +10,6 @@ const renderImages = async images => {
 
   let galleryHtml = '';
   const galleryList = document.querySelector('.gallery-list');
-  console.log('galleryList', galleryList);
   if (galleryList != null) {
     galleryHtml = galleryList.innerHTML;
   }

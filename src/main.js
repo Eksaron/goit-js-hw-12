@@ -47,8 +47,10 @@ const getImages = async page => {
     buttonmore.style.display = 'none';
     const response = await fetchImages(query, page);
     const images = response.hits;
-    console.log('response', response);
     await renderImages(images);
+    if (page > 1) {
+      galleryScroll();
+    }
     if (response.total <= page * 15) {
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
@@ -56,9 +58,6 @@ const getImages = async page => {
       return;
     }
     buttonmore.style.display = 'inline-block';
-    if (page > 1) {
-      galleryScroll();
-    }
   } catch (error) {
     iziToast.error({
       title: 'Error:',

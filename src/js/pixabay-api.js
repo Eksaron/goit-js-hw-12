@@ -19,7 +19,6 @@ async function fetchImages(query, page) {
 
   const config = { params: queryParams };
 
-  console.log('url', url);
   try {
     const response = await axios.get(url, config);
     return response.data;

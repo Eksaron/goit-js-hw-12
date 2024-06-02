@@ -36,7 +36,8 @@ form.addEventListener('submit', async event => {
     return;
   }
   gallery.innerHTML = '';
-  getImages(1);
+  page = 1;
+  getImages(page);
   return;
 });
 
@@ -48,14 +49,16 @@ const getImages = async page => {
     const images = response.hits;
     console.log('response', response);
     await renderImages(images);
-    if (response.total <= page * 20) {
+    if (response.total <= page * 15) {
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
       });
       return;
     }
     buttonmore.style.display = 'inline-block';
-    galleryScroll();
+    if (page > 1) {
+      galleryScroll();
+    }
   } catch (error) {
     iziToast.error({
       title: 'Error:',

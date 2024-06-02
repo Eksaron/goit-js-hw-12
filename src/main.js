@@ -12,7 +12,6 @@ const loader = document.getElementById('loader');
 const gallery = document.getElementById('gallery');
 
 const buttonmore = document.getElementById('load_more_btn');
-// buttonmore.style.visibility = 'hidden';
 buttonmore.style.display = 'none';
 
 let page = 1;
@@ -38,6 +37,7 @@ form.addEventListener('submit', async event => {
   gallery.innerHTML = '';
   page = 1;
   getImages(page);
+  form.reset();
   return;
 });
 
@@ -66,7 +66,6 @@ const getImages = async page => {
     });
   } finally {
     loader.style.display = 'none';
-    form.reset(); //clear form
   }
 };
 
